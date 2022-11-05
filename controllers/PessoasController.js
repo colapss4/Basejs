@@ -1,4 +1,4 @@
-const path = require('path')
+const axios = require('axios')
 let pessoas = []
 let alerta = false
 
@@ -33,6 +33,23 @@ class PessoasController {
         res.redirect('/')
     }
 
+    static async buscacep(req, res)
+    {
+        let cep = '69090312'
+        let rota = process.env.API_BASE + '' + cep + '/json/'
+
+        let endereco = await axios.get(rota)
+          .then(function (response) {
+            return response.data;
+          })
+          .catch(function (error) {
+            return error;
+          })
+
+        res.render('endereco', {
+            endereco:endereco
+        })  
+    }
 }
 
 
