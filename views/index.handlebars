@@ -1,0 +1,31 @@
+<h3>Pagina Inicial</h3>
+{{# if alerta}}
+
+<div class="alert alert-danger" role="alert">
+ Sem contatos cadastrados!!!
+</div>
+
+{{ else }}
+
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Data Nascimento</th>
+      <th scope="col">Telefone</th>
+      <th scope="col">CEP</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{# each pessoas}}
+    <tr>
+      <td>{{upperCase this.nome}}</td>
+      <td>{{formataData this.data_nascimento}}</td>
+      <td>{{this.telefone}}</td>
+      <td>{{this.cep}}</td>
+      {{/ each}}
+    </tr>
+  </tbody>
+</table>
+
+{{/ if}}
