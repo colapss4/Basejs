@@ -7,7 +7,11 @@ const helpers = require('./helpers/handlebars')
 const { engine } = require('express-handlebars')
 
 app.engine('handlebars', engine({
-    helpers:helpers
+    helpers: helpers,
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+    },
 }))
 
 app.set('view engine', 'handlebars')
